@@ -248,6 +248,7 @@ export interface SpecRestApiProps extends RestApiBaseProps {
 
 /**
  * Base implementation that are common to various implementations of IRestApi
+ * @deprecated This class will be made internal. No replacement.
  */
 export abstract class RestApiBase extends Resource implements IRestApi {
   /**
@@ -490,6 +491,9 @@ export abstract class RestApiBase extends Resource implements IRestApi {
     ignore(deployment);
   }
 
+  /**
+   * @deprecated This method will be made internal. No replacement
+   */
   protected configureCloudWatchRole(apiResource: CfnRestApi) {
     const role = new iam.Role(this, 'CloudWatchRole', {
       assumedBy: new iam.ServicePrincipal('apigateway.amazonaws.com'),
@@ -503,6 +507,9 @@ export abstract class RestApiBase extends Resource implements IRestApi {
     resource.node.addDependency(apiResource);
   }
 
+  /**
+   * @deprecated This method will be made internal. No replacement
+   */
   protected configureDeployment(props: RestApiOptions) {
     const deploy = props.deploy ?? true;
     if (deploy) {
